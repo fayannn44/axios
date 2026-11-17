@@ -1,10 +1,10 @@
+
 import { useState } from "react";
-import { Dialog, DialogTrigger } from "../ui/dialog";
-import ModalUpdate from "./ModalUpdate";
 import { Button } from "../ui/button";
 import { AlertDialog, AlertDialogTrigger } from "../ui/alert-dialog";
 import ModalDelete from "./ModalDelete";
 import { Pencil, Trash } from "lucide-react";
+import { useNavigate } from "react-router";
 
 interface Comment {
   id: string;
@@ -23,6 +23,7 @@ interface CommentListProps {
 
 function CommentList({ comments, setTrigger }: CommentListProps) {
   const [selectedId, setSelectedId] = useState("");
+  const navigate = useNavigate();
 
   return (
     <section>
@@ -36,7 +37,7 @@ function CommentList({ comments, setTrigger }: CommentListProps) {
                 <div className="flex justify-between items-center">
                   <p className="italic text-xs">"{comment.body}"</p>
 
-                  <div className="flex gap-1 ">
+                  <div className="flex gap-1">
                     <AlertDialog>
                       <AlertDialogTrigger>
                         <Button
@@ -48,22 +49,19 @@ function CommentList({ comments, setTrigger }: CommentListProps) {
                         </Button>
                       </AlertDialogTrigger>
 
-                      <ModalDelete selectedId={selectedId} setTrigger={setTrigger} />
+                      <ModalDelete
+                        selectedId={selectedId}
+                        setTrigger={setTrigger}
+                      />
                     </AlertDialog>
 
-                    <Dialog>
-                      <DialogTrigger>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          onClick={() => setSelectedId(comment.id)}
-                        >
-                          <Pencil />
-                        </Button>
-                      </DialogTrigger>
-
-                      <ModalUpdate selectedId={selectedId} setTrigger={setTrigger} />
-                    </Dialog>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => navigate(`/edit/${comment.id}`)}
+                    >
+                      <Pencil />
+                    </Button>
                   </div>
                 </div>
 

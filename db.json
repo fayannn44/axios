@@ -1,12 +1,28 @@
 {
   "comments": [
     {
-      "body": "Ini data kesatu",
+      "body": "aduhai wkwkwkwkkw\n",
       "likes": 0,
       "user": {
-        "username": "Izra"
+        "username": "fianasdsadsad"
       },
       "id": "1"
+    },
+    {
+      "body": "aduh selesai nih",
+      "likes": 0,
+      "user": {
+        "username": "fian "
+      },
+      "id": "2gD72dZIryg"
+    },
+    {
+      "body": "sad",
+      "likes": 0,
+      "user": {
+        "username": "ea"
+      },
+      "id": "4Sg-RGkt-q8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
